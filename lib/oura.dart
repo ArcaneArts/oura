@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:chopper/chopper.dart';
 import 'package:oura/generated/client_index.dart';
 
+export "package:oura/extensions.dart";
 export "package:oura/generated/client_index.dart";
 
 class OuraPATAuthenticator extends Authenticator {
@@ -20,6 +21,7 @@ class OuraPATAuthenticator extends Authenticator {
 }
 
 class OuraAPI {
-  static Oura fromPersonalAccessToken(String accessToken) =>
-      Oura.create(authenticator: OuraPATAuthenticator(accessToken));
+  static Oura fromPersonalAccessToken(String accessToken) => Oura.create(
+      baseUrl: Uri.parse("https://api.ouraring.com/"),
+      authenticator: OuraPATAuthenticator(accessToken));
 }
